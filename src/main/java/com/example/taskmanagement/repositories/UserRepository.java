@@ -28,4 +28,33 @@ public class UserRepository {
         }
         return null;
     }
+
+    public User addUser(User user) {
+        users.add(user);
+        return user;
+    }
+
+    public User save(Long id, User user) {
+        User x = findUserById(id);
+
+        if (x == null) {
+            return null;
+        }
+
+        x.setName(user.getName());
+        x.setEmail(user.getEmail());
+        x.setRole(user.getRole());
+
+        return x;
+    }
+
+    public User deleteById(Long id) {
+        User x = findUserById(id);
+        if (x == null) {
+            return null;
+        }
+        users.remove(x);
+
+        return x;
+    }
 }

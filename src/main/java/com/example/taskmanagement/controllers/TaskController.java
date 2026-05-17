@@ -71,7 +71,7 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTask(@PathVariable Long id) {
-        Task x = taskService.deleteTask(id);
+        Task x = taskService.deleteTaskById(id);
 
         if (x == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task không tìm thấy");
