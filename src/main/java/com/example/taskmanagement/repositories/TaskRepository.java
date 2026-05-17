@@ -41,4 +41,30 @@ public class TaskRepository {
         tasks.add(task);
         return task;
     }
+
+    public Task save(Long id, Task task) {
+        Task x = findTaskById(id);
+
+        if (x == null) {
+            return null;
+        }
+
+        x.setTitle(task.getTitle());
+        x.setDescription(task.getDescription());
+        x.setPriority(task.getPriority());
+        x.setAssignedTo(task.getAssignedTo());
+
+        return x;
+    }
+
+    public Task deleteById(Long id) {
+
+        Task x = findTaskById(id);
+        if (x == null) {
+            return null;
+        }
+        tasks.remove(x);
+
+        return x;
+    }
 }

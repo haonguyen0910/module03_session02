@@ -5,6 +5,7 @@ import com.example.taskmanagement.models.User;
 import com.example.taskmanagement.services.TaskService;
 import com.example.taskmanagement.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,5 +57,26 @@ public class TaskController {
 
         Task task = taskService.addTask(newTask);
         return ResponseEntity.status(201).body(task);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateTask(@PathVariable Long id,@RequestBody Task task) {
+        Task x =taskService.updateTask(id, task);
+        if (x == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task không tìm thấy");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(x);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTask(@PathVariable Long id) {
+        Task x = taskService.deleteTask(id);
+
+        if (x == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task không tìm thấy");
+        }
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

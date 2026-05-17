@@ -26,18 +26,22 @@ public class TaskService {
 
     public Task addTask(Task task){
         User user = userRepository.findUserById(task.getAssignedTo());
-
         if (user == null) {
             return null;
         }
-
         return taskRepository.addTask(task);
     }
 
     public boolean isTaskExists(Long id) {
-
         Task task = taskRepository.findTaskById(id);
-
         return task != null;
+    }
+
+    public Task updateTask(Long id, Task task) {
+        return taskRepository.save(id, task);
+    }
+
+    public Task deleteTask(Long id) {
+        return taskRepository.deleteById(id);
     }
 }
