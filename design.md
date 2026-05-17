@@ -40,9 +40,9 @@
 
 6. Tìm các công việc có độ ưu tiên là "high" và được giao cho người dùng với id là 1
 
-| Method | Endpoint | Mô tả |
-| ------ | ------ |---|
-| GET | /tasks?priority=high&userId=1  |Tìm các công việc priority "high" và giao cho user id = 1| 
+| Method | Endpoint                  | Mô tả |
+| ------ |---------------------------|---|
+| GET | /tasks?priority=high&id=1 |Tìm các công việc priority "high" và giao cho user id = 1| 
 
 7. Liệt kê toàn bộ công việc của 1 người dùng.
 
@@ -54,7 +54,7 @@
 
 | Method | Endpoint | Mô tả |
 | ------ | ------ |---|
-| PUT | /tasks/{taskId}/assign-user|Gắn công việc cho người dùng|
+| PUT | /tasks/{taskId}/assignedTo|Gắn công việc cho người dùng|
 
 
 

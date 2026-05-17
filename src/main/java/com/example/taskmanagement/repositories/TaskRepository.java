@@ -27,4 +27,18 @@ public class TaskRepository {
     public List<Task> findAll() {
         return tasks;
     }
+
+    public Task findTaskById(Long id) {
+        for (Task x : tasks) {
+            if(x.getId() == id) {
+                return x;
+            }
+        }
+        return null;
+    }
+
+    public Task addTask(Task task) {
+        tasks.add(task);
+        return task;
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.taskmanagement.repositories;
 
 import com.example.taskmanagement.models.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -19,5 +18,14 @@ public class UserRepository {
 
     public List<User> findAll() {
         return users;
+    }
+
+    public User findUserById(Long id) {
+        for (User x : users) {
+            if(x.getId() == id) {
+                return x;
+            }
+        }
+        return null;
     }
 }
